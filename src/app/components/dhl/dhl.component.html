@@ -1,2 +1,54 @@
-<p>dhl works!</p>
-11
+<div class="card">
+    <div class="card-header">
+      DHL
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formDhl" (ngSubmit)="Operacion()">
+        <p>Actualmente el  extracargo por Fuel es de 34% en Octubre será de ??% </p>
+        <p>Para revisar los extracargos, el enlace es <a href="https://mydhl.express.dhl/es/es/ship/surcharges.html#/fuel_surcharge">este</a>.</p>
+  
+          <div class="mb-3">
+            <label for="" class="form-label">Pallet</label>
+            <input type="number"
+              class="form-control" name="" id="pallet" aria-describedby="helpId" formControlName="pallet" placeholder="Indica la cantidad de pallet" >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Cargos de transporte</label>
+            <input type="number"
+              class="form-control" name="" id="transport" aria-describedby="helpId" formControlName="transport" placeholder="Indica los cargos de transporte" >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Suplemento por combustible</label>
+            <input type="number"
+              class="form-control" name="" id="fuel" aria-describedby="helpId" formControlName="fuel" placeholder="Indica el suplemento por combustible" >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Seguro a todo riesgo</label>
+            <input type="number"
+              class="form-control" name="" id="risk" aria-describedby="helpId" formControlName="risk" placeholder="Indica el seguro a todo riesgo" >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Sobrepeso</label>
+            <input type="number"
+              class="form-control" name="" id="overheight" aria-describedby="helpId" formControlName="overheight" placeholder="Indica el importe por sobrepeso" >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Situacion de emergencia</label>
+            <input type="number"
+              class="form-control" name="" id="emergency" aria-describedby="helpId" formControlName="emergency" placeholder="Indica el importe por situacion de emergencia" >
+          </div>
+          <div class="btn-group"  aria-label="Button group name">
+            <button type="submit" class="btn btn-primary">Ejecutar</button>
+          </div>
+            <p>El desglose sin Fuel es {{this.desglose}}</p>
+            <p>El total real es {{this.totReal}} €</p>
+            <p>El importe para cobrar al cliente es {{this.price}} €</p>
+            <!-- <p>{{today}}</p> -->
+            <!-- <p><button  (click)="alta()" class="btn btn-primary">Agregar</button></p> -->
+      </form>
+    </div>
+  
+  </div>
+  
+  
+  
