@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { DhlComponent } from './components/dhl/dhl.component';
 import { CeaceroComponent } from './components/ceacero/ceacero.component';
 import { IbanComponent } from './components/iban/iban.component';
+import { ApiComponent } from './components/api/api.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DhlComponent,
     CeaceroComponent,
-    IbanComponent
+    IbanComponent,
+    ApiComponent
   ],
   imports: [
     BrowserModule,
