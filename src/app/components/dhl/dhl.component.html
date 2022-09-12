@@ -40,11 +40,18 @@
           <div class="btn-group"  aria-label="Button group name">
             <button type="submit" class="btn btn-primary">Ejecutar</button>
           </div>
+
+          <div *ngIf="price == 0">
+            <p>Todavia no hemos recibido informacion</p>
+          </div>
+
+          <div *ngIf="price != 0">
             <p>El desglose sin Fuel es {{this.desglose}}</p>
             <p>El total real es {{this.totReal}} €</p>
             <p>El importe para cobrar al cliente es {{this.price}} €</p>
-            <!-- <p>{{today}}</p> -->
-            <!-- <p><button  (click)="alta()" class="btn btn-primary">Agregar</button></p> -->
+          </div>
+
+            <p><button  (click)="alta()" class="btn btn-primary">Agregar</button></p>
       </form>
     </div>
   

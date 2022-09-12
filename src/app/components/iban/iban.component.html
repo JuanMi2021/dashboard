@@ -1,2 +1,56 @@
-<p>iban works!</p>
-33
+<div class="card">
+    <div class="card-header">
+      FACTURACION
+    </div>
+    <div class="card-body">
+
+            <h4>Añadir nueva empresa</h4>
+            <div class="mb-3">
+                <label for="" class="form-label">Indica el IBAN</label>
+                <input type="string"
+                  class="form-control" name="" id="IBAN" aria-describedby="helpId" formControlName="IBAN" placeholder="Indica el número de IBAN para comprobar" >
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">NIF de la Empresa</label>
+                <input type="string"
+                  class="form-control" name="" id="NIF" aria-describedby="helpId" formControlName="NIF" placeholder="Indica el NIF de la Empresa" >
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Nombre de la Empresa</label>
+                <input type="string"
+                  class="form-control" name="" id="empresa" aria-describedby="helpId" formControlName="empresa" placeholder="Indica el nombre de la Empresa" >
+            </div>
+            <p><button class="btn btn-primary">Añadir</button></p>
+
+
+            <hr>
+            <h4>Comprobacion de IBAN</h4>
+            <div class="mb-3">
+                <label for="" class="form-label">Indica el IBAN</label>
+                <input type="string"
+                  class="form-control" name="" id="IBAN" aria-describedby="helpId" formControlName="IBAN" placeholder="Indica el número de IBAN para comprobar" >
+            </div>
+            <p><button class="btn btn-primary">Comprobar</button></p>
+            <div class="table-responsive">
+                <table class="table table-primary">
+                <thead>
+                    <tr>
+                    <th>Nombre</th>
+                    <th >IBAN</th>
+                    <th>NIF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                    <td>Buscar el Nombre</td>
+                    <td>Buscar el IBAN</td>
+                    <td>Buscar en NIF</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+  
+    </div>
+  
+  </div>
+  
