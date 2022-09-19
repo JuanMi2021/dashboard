@@ -1,2 +1,4 @@
 node_modules
+angular.json
 .angular/cache
+node_modules/.package-lock.json
