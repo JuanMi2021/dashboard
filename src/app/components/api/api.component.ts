@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../../services/crud.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { async, Observable, toArray } from 'rxjs';
 import { isIdentifier } from '@angular/compiler';
 
 
@@ -17,7 +16,6 @@ import { isIdentifier } from '@angular/compiler';
   providedIn: 'root'
 })
 
-
 export class ApiComponent implements OnInit {
   myGroup:any
 
@@ -26,25 +24,32 @@ export class ApiComponent implements OnInit {
   prod={
     id:""
   }
-
   productos:any;
   //myGroup:any;
   data$:any;
   constructor(private servicio:CrudService) { 
     //this.productos={};
+    //this.servicio.gimmeProductos().subscribe((result)=>{result=this.productos=result;console.log(result)})
   }
-/*
+  /*
   prodObservable = new Observable((observer) => {
-      this.productos = this.getProductos
+    this.productos = this.getProductos
   });
-*/  
-  ngOnInit() {
-    /*this.myGroup = new FormGroup({
+  */  
+ 
+ ngOnInit() {
+   this.getProductos();
+   /*this.myGroup = new FormGroup({
       ids: new FormControl(this.getProductos())
     });*/
     //this.getProductos().subscribe((result:any)=>{this.productos=result;});
     //this.prodObservable.subscribe()
-    this.getProductos();
+    //this.getProductos()
+
+    /*
+    this.servicio.recuperarTodos().subscribe(() => {
+      this.servicio.recuperarTodos().forEach(value=>{this.productos=value; console.log(Object.values(value)[0]["@attributes"]["id"])});
+    });/* */
     console.log(this.productos);
     //this.productos=this.getProductos().subscribe((result:any)=>{console.log(result)});
     //this.productos=this.getProductos().subscribe((result:any) => {this.productos=result});
@@ -52,14 +57,18 @@ export class ApiComponent implements OnInit {
     
   //this.myGroup = new FormGroup({id: new FormControl()});
   };
-  
   getProductos(){
-    //return this.servicio.recuperarTodos();
     
+    this.servicio.gimmeProductos().subscribe(
+      (result)=>{Object.values(result).forEach(value=>this.productos=value);console.log(this.productos)},
+      err=>console.log("error: "+err),
+      () => console.log("Fin de observador")
+      );
+    //return this.servicio.recuperarTodos();
     // Funciona
-    this.servicio.recuperarTodos().subscribe(() => {
+    /*this.servicio.recuperarTodos().subscribe(() => {
       this.servicio.recuperarTodos().forEach(value=>{this.productos=value; console.log(Object.values(value)[0]["@attributes"]["id"])});
-    });
+    });/** */
     /* //Funciona
     this.servicio.recuperarTodos().subscribe((result:object) => {this.productos=result});
     this.servicio.recuperarTodos().forEach(value=>{this.productos=value});
