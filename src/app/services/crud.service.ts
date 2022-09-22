@@ -16,16 +16,26 @@ export class CrudService {
   constructor(private http: HttpClient) { }
 
 
-  gimmeProductos(): Observable<any>{
-    return this.http.get(`${this.url}callProducto.php`).pipe(retry(3),catchError((error:HttpErrorResponse)=>{return throwError(()=>{new Error("Ha ocurrido un error")})}));
+  gimmeProductos(): Observable<Object>{
+    //return this.http.get<Observable<Object>>(`${this.url}callProducto.php`).pipe(retry(3),catchError((error:HttpErrorResponse)=>{return throwError(()=>{new Error("Ha ocurrido un error")})}));
+    return this.http.get<Observable<Object>>(`${this.url}callProducto.php`);
   }
-
+  /*gimmeProductos(){
+    this.http.get(`${this.url}callProducto.php`).subscribe(result=>this.data=result);
+    return this.data
+  }/** */
+  /*gimmeProductos(){
+    return this.http.get(`${this.url}callProducto.php`);
+  }/** */
   recuperarTodos() {
     //return this.http.get(`${this.url}recuperartodos.php`);
     //this.http.get(`${this.url}callProducto.php`).subscribe((result:any)=>{this.myData.next(result)});
     //this.http.get(`${this.url}callProducto.php`).subscribe((result:any)=>{this.data = result});
     //this.data=this.http.get(`${this.url}callProducto.php`);
-    return this.http.get(`${this.url}callProducto.php`);
+    const req = this.http.get(`${this.url}callProducto.php`);
+    req.subscribe()
+    return req
+    
     //return this.myData.asObservable();
     //return this.data;
   }

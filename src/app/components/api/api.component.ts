@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../../services/crud.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { isIdentifier } from '@angular/compiler';
+import { toArray } from 'rxjs';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class ApiComponent implements OnInit {
   data$:any;
   constructor(private servicio:CrudService) { 
     //this.productos={};
-    //this.servicio.gimmeProductos().subscribe((result)=>{result=this.productos=result;console.log(result)})
+    //this.productos=this.servicio.gimmeProductos().subscribe((result)=>{result=this.productos=result;console.log(result)})
   }
   /*
   prodObservable = new Observable((observer) => {
@@ -37,8 +38,9 @@ export class ApiComponent implements OnInit {
   });
   */  
  
- ngOnInit() {
-   this.getProductos();
+  ngOnInit() {
+    this.getProductos();
+    console.log(this.productos);
    /*this.myGroup = new FormGroup({
       ids: new FormControl(this.getProductos())
     });*/
@@ -50,7 +52,6 @@ export class ApiComponent implements OnInit {
     this.servicio.recuperarTodos().subscribe(() => {
       this.servicio.recuperarTodos().forEach(value=>{this.productos=value; console.log(Object.values(value)[0]["@attributes"]["id"])});
     });/* */
-    console.log(this.productos);
     //this.productos=this.getProductos().subscribe((result:any)=>{console.log(result)});
     //this.productos=this.getProductos().subscribe((result:any) => {this.productos=result});
     //this.http.get(`${this.url}callProducto.php`).forEach(value=>{this.productos=value});
@@ -59,14 +60,30 @@ export class ApiComponent implements OnInit {
   };
   getProductos(){
     
-    this.servicio.gimmeProductos().subscribe(
-      (result)=>{Object.values(result).forEach(value=>this.productos=value);console.log(this.productos)},
-      err=>console.log("error: "+err),
-      () => console.log("Fin de observador")
-      );
+    /*this.servicio.gimmeProductos().subscribe(
+      (result)=>{this.productos=result;console.log(this.productos)}
+    );
+      /** */
+      this.servicio.recuperarTodos().subscribe((resultado)=>this.productos=resultado)
+      //this.productos=this.servicio.recuperarTodos()
+    /*const prueba=this.servicio.recuperarTodos()
+    prueba.subscribe((result)=>{
+      this.productos=result;console.log(this.productos)
+    })*/
+    /*this.servicio.recuperarTodos().subscribe(
+      (result)=>{this.productos=Object.values(result);console.log(this.productos);
+        //for (const iterator of Object.values(result)) {console.log(iterator["@attributes"]["id"]);}
+      }
+    );/**/
     //return this.servicio.recuperarTodos();
+    //this.productos=this.servicio.recuperarTodos();
+    /*this.servicio.recuperarTodos().subscribe();
+    this.servicio.recuperarTodos().forEach(element => {
+      this.productos=element;
+    });/** */
     // Funciona
-    /*this.servicio.recuperarTodos().subscribe(() => {
+    /*
+    this.servicio.recuperarTodos().subscribe(() => {
       this.servicio.recuperarTodos().forEach(value=>{this.productos=value; console.log(Object.values(value)[0]["@attributes"]["id"])});
     });/** */
     /* //Funciona

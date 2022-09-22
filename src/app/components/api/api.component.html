@@ -7,10 +7,11 @@
     </form>
     
     <p *ngIf="productos.length > 0">Existen productos</p>
+    <p>{{productos}}</p>
 -->
     <table>
         <tr><th>id</th></tr>
-        <tr *ngFor="let pr of productos">
+        <tr *ngFor="let pr of productos;">
             <td>{{pr["@attributes"]["id"]}}</td>
         </tr>
     </table>
