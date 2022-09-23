@@ -17,8 +17,16 @@ import { toArray } from 'rxjs';
   providedIn: 'root'
 })
 
+
+
+
 export class ApiComponent implements OnInit {
-  myGroup:any
+  
+  myGroup=new FormGroup({});
+
+  misProductos = new FormGroup({
+    id: new FormControl()
+  });
 
   url = "https://prueba.sicnova3d.com/CRUD/";
   
@@ -39,8 +47,11 @@ export class ApiComponent implements OnInit {
   */  
  
   ngOnInit() {
+    //this.getProductos().subscribe((resultado)=>{this.productos=resultado;console.log(this.productos)});
+    //this.productos=this.getProductos()
+    //this.servicio.recuperarTodos().subscribe(resultado=>this.productos=resultado)
     this.getProductos();
-    console.log(this.productos);
+    //console.log(this.servicio.recuperarTodos());
    /*this.myGroup = new FormGroup({
       ids: new FormControl(this.getProductos())
     });*/
@@ -59,12 +70,19 @@ export class ApiComponent implements OnInit {
   //this.myGroup = new FormGroup({id: new FormControl()});
   };
   getProductos(){
-    
+    this.servicio.recuperarTodos().subscribe((resultado)=>{this.productos=resultado;});
+    // this.servicio.recuperarTodos().subscribe((resultado)=>{
+    //   Object.values(resultado).forEach(element => {
+    //     //let temp=[];
+    //     //temp.push(new FormControl({id : element["@attributes"]["id"]}));
+    //     this.myGroup.addControl("id",new FormControl({id : element["@attributes"]["id"]}))
+    //   });
+    // });
     /*this.servicio.gimmeProductos().subscribe(
       (result)=>{this.productos=result;console.log(this.productos)}
     );
       /** */
-      this.servicio.recuperarTodos().subscribe((resultado)=>this.productos=resultado)
+      //this.servicio.recuperarTodos().subscribe((resultado)=>this.productos=resultado)
       //this.productos=this.servicio.recuperarTodos()
     /*const prueba=this.servicio.recuperarTodos()
     prueba.subscribe((result)=>{
@@ -75,7 +93,12 @@ export class ApiComponent implements OnInit {
         //for (const iterator of Object.values(result)) {console.log(iterator["@attributes"]["id"]);}
       }
     );/**/
+
+
+    //console.log(this.servicio.recuperarTodos());
     //return this.servicio.recuperarTodos();
+
+
     //this.productos=this.servicio.recuperarTodos();
     /*this.servicio.recuperarTodos().subscribe();
     this.servicio.recuperarTodos().forEach(element => {

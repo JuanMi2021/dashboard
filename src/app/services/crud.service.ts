@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParamsOptions } from '@angular/common/http';
-import { BehaviorSubject, catchError, Observable, retry, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, observable, Observable, retry, throwError } from 'rxjs';
 // import { Dhli } from './dhli';
 
 @Injectable({
@@ -32,9 +32,15 @@ export class CrudService {
     //this.http.get(`${this.url}callProducto.php`).subscribe((result:any)=>{this.myData.next(result)});
     //this.http.get(`${this.url}callProducto.php`).subscribe((result:any)=>{this.data = result});
     //this.data=this.http.get(`${this.url}callProducto.php`);
-    const req = this.http.get(`${this.url}callProducto.php`);
-    req.subscribe()
-    return req
+    //let mas_datos;
+    return this.http.get(`${this.url}callProducto.php`);
+    /*
+    this.http.get(`${this.url}callProducto.php`).subscribe((resultado)=>{mas_datos=resultado;})/*
+    const req  = new Observable((observer)=>{
+      this.http.get(`${this.url}callProducto.php`).subscribe((resultado)=>{mas_datos=resultado;console.log(mas_datos);console.log(resultado)})
+    })*/
+    //req.subscribe();
+    //return mas_datos;
     
     //return this.myData.asObservable();
     //return this.data;
