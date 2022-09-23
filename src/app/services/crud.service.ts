@@ -12,38 +12,16 @@ export class CrudService {
   //url='https://development.sicnova3d.com/test/proyect/classes/'; // disponer url de su servidor que tiene las páginas PHP
   url = "https://prueba.sicnova3d.com/CRUD/";
   data:any;
-  //data=new Object;
   constructor(private http: HttpClient) { }
 
 
   gimmeProductos(): Observable<Object>{
-    //return this.http.get<Observable<Object>>(`${this.url}callProducto.php`).pipe(retry(3),catchError((error:HttpErrorResponse)=>{return throwError(()=>{new Error("Ha ocurrido un error")})}));
-    return this.http.get<Observable<Object>>(`${this.url}callProducto.php`);
+    return this.http.get(`${this.url}callProducto.php`);
   }
-  /*gimmeProductos(){
-    this.http.get(`${this.url}callProducto.php`).subscribe(result=>this.data=result);
-    return this.data
-  }/** */
-  /*gimmeProductos(){
-    return this.http.get(`${this.url}callProducto.php`);
-  }/** */
   recuperarTodos() {
-    //return this.http.get(`${this.url}recuperartodos.php`);
-    //this.http.get(`${this.url}callProducto.php`).subscribe((result:any)=>{this.myData.next(result)});
-    //this.http.get(`${this.url}callProducto.php`).subscribe((result:any)=>{this.data = result});
-    //this.data=this.http.get(`${this.url}callProducto.php`);
-    //let mas_datos;
     return this.http.get(`${this.url}callProducto.php`);
-    /*
-    this.http.get(`${this.url}callProducto.php`).subscribe((resultado)=>{mas_datos=resultado;})/*
-    const req  = new Observable((observer)=>{
-      this.http.get(`${this.url}callProducto.php`).subscribe((resultado)=>{mas_datos=resultado;console.log(mas_datos);console.log(resultado)})
-    })*/
-    //req.subscribe();
-    //return mas_datos;
     
-    //return this.myData.asObservable();
-    //return this.data;
+    //return this.http.get(`${this.url}recuperartodos.php`);
   }
 
   alta(articulo:any) {
