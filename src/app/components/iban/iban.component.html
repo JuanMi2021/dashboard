@@ -2,20 +2,19 @@
     <div class="card-header">
       FACTURACION
     </div>
-    <div class="card-body">
-
+    <div class="card-body" [formGroup]="myGroup">
             <h4>Añadir nueva empresa</h4>
-            <div class="mb-3">
+            <div class="mb-3" formGroupName="Empresas">
                 <label for="" class="form-label">Indica el IBAN</label>
                 <input type="string"
                   class="form-control" name="" id="IBAN" aria-describedby="helpId" formControlName="IBAN" placeholder="Indica el número de IBAN para comprobar" >
             </div>
-            <div class="mb-3">
+            <div class="mb-3" formGroupName="Empresas">
                 <label for="" class="form-label">NIF de la Empresa</label>
                 <input type="string"
                   class="form-control" name="" id="NIF" aria-describedby="helpId" formControlName="NIF" placeholder="Indica el NIF de la Empresa" >
             </div>
-            <div class="mb-3">
+            <div class="mb-3" formGroupName="Empresas">
                 <label for="" class="form-label">Nombre de la Empresa</label>
                 <input type="string"
                   class="form-control" name="" id="empresa" aria-describedby="helpId" formControlName="empresa" placeholder="Indica el nombre de la Empresa" >
@@ -25,7 +24,7 @@
 
             <hr>
             <h4>Comprobacion de IBAN</h4>
-            <div class="mb-3">
+            <div class="mb-3" [formGroup]="myGroup" formGroupName="Empresas">
                 <label for="" class="form-label">Indica el IBAN</label>
                 <input type="string"
                   class="form-control" name="" id="IBAN" aria-describedby="helpId" formControlName="IBAN" placeholder="Indica el número de IBAN para comprobar" >
