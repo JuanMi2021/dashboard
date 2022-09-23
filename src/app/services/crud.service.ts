@@ -15,9 +15,6 @@ export class CrudService {
   constructor(private http: HttpClient) { }
 
 
-  gimmeProductos(): Observable<Object>{
-    return this.http.get(`${this.url}callProducto.php`);
-  }
   recuperarTodos() {
     return this.http.get(`${this.url}callProducto.php`);
     
