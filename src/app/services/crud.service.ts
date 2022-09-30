@@ -14,14 +14,29 @@ export class CrudService {
   data:any;
   constructor(private http: HttpClient) { }
   
-  recuperarUno(id:any){
-    return this.http.get(`${this.url}callProducto.php?id=${id}`);
+  recuperarUno(id:any, uri:any){
+    return this.http.get(`${this.url}callProducto.php?id=${id}&uri=${uri}`);
   }
   
-  recuperarTodos(){
+  recuperarTodos(direccion:string){
+    let salida;
     //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     //return this.http.get(`${this.url}callProducto.php`,{headers, responseType:'text' });
-    return this.http.get(`${this.url}callProducto.php`);
+    switch (direccion) {
+      case "tienda":
+          salida = this.http.get(`${this.url}callProducto.php?uri=tienda`);
+        break;
+      case "distribuidor":
+          salida = this.http.get(`${this.url}callProducto.php?uri=distribuidor`);
+        break;
+      case "latam":
+          salida = this.http.get(`${this.url}callProducto.php?uri=latam`);
+        break;
+      default:
+          salida = this.http.get(`${this.url}callProducto.php?uri=error`);
+        break;
+    }
+    return salida;
     //return this.http.get(`${this.url}recuperartodos.php`);
   }
 
