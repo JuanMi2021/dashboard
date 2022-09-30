@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParamsOptions } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
 import { BehaviorSubject, catchError, observable, Observable, retry, throwError } from 'rxjs';
 // import { Dhli } from './dhli';
 
@@ -8,16 +8,20 @@ import { BehaviorSubject, catchError, observable, Observable, retry, throwError 
 })
 export class CrudService {
   //myData: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-
+  
   //url='https://development.sicnova3d.com/test/proyect/classes/'; // disponer url de su servidor que tiene las páginas PHP
   url = "https://prueba.sicnova3d.com/CRUD/";
   data:any;
   constructor(private http: HttpClient) { }
-
-
-  recuperarTodos() {
+  
+  recuperarUno(id:any){
+    return this.http.get(`${this.url}callProducto.php?id=${id}`);
+  }
+  
+  recuperarTodos(){
+    //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    //return this.http.get(`${this.url}callProducto.php`,{headers, responseType:'text' });
     return this.http.get(`${this.url}callProducto.php`);
-    
     //return this.http.get(`${this.url}recuperartodos.php`);
   }
 

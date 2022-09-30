@@ -302,7 +302,7 @@
   }
 </style>
 
-<!-- Toolbar --> 
+<!-- Toolbar 
 <div class="toolbar" role="banner">
   <img
     width="40"
@@ -326,8 +326,9 @@
 </div>
 
 <div class="content" role="main">
+  --> 
 
-   <!-- Highlight Card  -->
+   <!-- Highlight Card 
   <div class="card highlight-card card-small">
 
     <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
@@ -349,8 +350,9 @@
     </svg>
 
   </div>
+-->
  
-  <!-- Resources -->
+  <!-- Resources 
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
 
@@ -385,8 +387,9 @@
     </a>
 
   </div>
+-->
 
-  <!-- Next Steps -->
+  <!-- Next Steps 
   
   <h2>Next Steps</h2>
   <p>What do you want to do next with your app?</p>
@@ -424,8 +427,8 @@
       <span>Build for Production</span>
     </button>
   </div>
-
-  <!-- Terminal -->
+-->
+  <!-- Terminal
   
   <div class="terminal" [ngSwitch]="selection.value">
       <pre *ngSwitchDefault>ng generate component xyz</pre>
@@ -434,9 +437,10 @@
       <pre *ngSwitchCase="'dependency'">ng add _____</pre>
       <pre *ngSwitchCase="'test'">ng test</pre>
       <pre *ngSwitchCase="'build'">ng build</pre>
-  </div>-->
+  </div>  
+-->
 
-  <!-- Links --> 
+  <!-- Links 
   <div class="card-container">
     <a class="circle-link" title="Find a Local Meetup" href="https://www.meetup.com/find/?keywords=angular" target="_blank" rel="noopener">
       <svg xmlns="http://www.w3.org/2000/svg" width="24.607" height="23.447" viewBox="0 0 24.607 23.447">
@@ -453,9 +457,9 @@
       </svg>
     </a>
   </div>
-  
+  --> 
 
-  <!-- Footer -->
+  <!-- Footer 
   
   <footer>
       Love Angular?&nbsp;
@@ -476,19 +480,20 @@
   </svg>
 
 </div>
+-->
 
-
-   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
 <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<app-dhl></app-dhl>
-<app-ceacero></app-ceacero>
-<app-iban></app-iban>
+<!--
+  <app-dhl></app-dhl>
+  <app-ceacero></app-ceacero>
+  <app-iban></app-iban>
+-->
 <app-api></app-api>
-
+<!--<li><a routerLink="/api" class="nav-link px-2 link-dark">Facturacion</a></li>-->
 <router-outlet></router-outlet>
