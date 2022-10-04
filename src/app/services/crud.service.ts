@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
-import { BehaviorSubject, catchError, observable, Observable, retry, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, count, observable, Observable, retry, throwError } from 'rxjs';
 // import { Dhli } from './dhli';
 
 @Injectable({
@@ -14,30 +14,26 @@ export class CrudService {
   data:any;
   constructor(private http: HttpClient) { }
   
-  recuperarUno(id:any, uri:any){
+  getProducto(id:any, uri:any){
     return this.http.get(`${this.url}callProducto.php?id=${id}&uri=${uri}`);
   }
   
-  recuperarTodos(direccion:string){
+  damePaginas(direccion:string){
+    let salida;
+    salida = this.http.get(`${this.url}callProducto.php?uri=${direccion}`);
+    return salida;
+  }
+
+  getProductos(direccion:string,pag:number){
     let salida;
     //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    //return this.http.get(`${this.url}callProducto.php`,{headers, responseType:'text' });
-    switch (direccion) {
-      case "tienda":
-          salida = this.http.get(`${this.url}callProducto.php?uri=tienda`);
-        break;
-      case "distribuidor":
-          salida = this.http.get(`${this.url}callProducto.php?uri=distribuidor`);
-        break;
-      case "latam":
-          salida = this.http.get(`${this.url}callProducto.php?uri=latam`);
-        break;
-      default:
-          salida = this.http.get(`${this.url}callProducto.php?uri=error`);
-        break;
-    }
+    //salida = this.http.get(`${this.url}callProducto.php`,{headers, responseType:'text' });
+    salida = this.http.get(`${this.url}callProducto.php?uri=${direccion}&pag=${pag}`);
     return salida;
-    //return this.http.get(`${this.url}recuperartodos.php`);
+  }
+
+  importarProducto(id:any,uri:any){
+    return this.http.get(`${this.url}callProducto.php?id=${id}&uri=${uri}`);
   }
 
   alta(articulo:any) {
