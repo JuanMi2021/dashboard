@@ -78,7 +78,6 @@ export class ApiComponent implements OnInit {
           left: 0, 
           behavior: 'smooth' 
         });
-        console.log(resultado)
       });
     }
   };
@@ -86,7 +85,6 @@ export class ApiComponent implements OnInit {
   getProductosTienda(){
     this.toggleLst=true;
     this.productos=null;
-    console.log("Cargando Tienda")
     if(this.tienda==false || this.paginas==0){
       this.servicio.damePaginas("tienda").subscribe((resultado)=>{this.paginas= Math.floor(Object.values(resultado).length/100)})
       this.tienda=true;
@@ -100,7 +98,6 @@ export class ApiComponent implements OnInit {
   getProductosDistribuidor(){
     this.toggleLst=true;
     this.productos=null;
-    console.log("Cargando Distribuidor")
     if(this.distri==false || this.paginas==0){
       this.servicio.damePaginas("distribuidor").subscribe((resultado)=>{this.paginas= Math.floor(Object.values(resultado).length/100)})
       this.tienda=false;
@@ -114,7 +111,6 @@ export class ApiComponent implements OnInit {
   getProductosLatam(){
     this.toggleLst=true;
     this.productos=null;
-    console.log("Cargando Latam")
     if(this.latam==false || this.paginas==0){
       this.servicio.damePaginas("latam").subscribe((resultado)=>{this.paginas= Math.floor(Object.values(resultado).length/100)})
       this.tienda=false;
@@ -143,7 +139,7 @@ export class ApiComponent implements OnInit {
       this.toggleError=true;
     }else{
       this.toggleError=false;
-      this.servicio.importarProductos(info)
+      this.servicio.importarProductos(info).subscribe((resultado)=>{console.log(resultado)})
     }
 
       /*
@@ -193,8 +189,6 @@ export class ApiComponent implements OnInit {
         this.toggleImport=false
       }
     }
-    console.log(this.toggleImport)
-    console.log(this.productoIds.length)
     console.log(this.productoIds)
   }
 
