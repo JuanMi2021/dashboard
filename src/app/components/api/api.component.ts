@@ -19,25 +19,30 @@ import { count, toArray } from 'rxjs';
 
 
 export class ApiComponent implements OnInit {
-
+  //variables Bool
   toggleDscrptn:boolean=true;
   toggleDscrptnshrt:boolean=true;
   toggleLst:boolean=false;
+  toggleError:boolean=false;
+  toggleImport:boolean=false;
   tienda:boolean=false;
   distri:boolean=false;
   latam:boolean=false;
   triwee:boolean=false;
+  //variables Any
   productos:any;
   producto:any;
   campos:any;
   vals:any;
   esFalso:any;
+  productoIds:any[]=[];
+  //variables number
   paginas: number = 0;
   pagina: number = 0;
-  toggleImport:boolean=false;
+  //variables string
   origen:string="";
   destino:string="";
-  IDs:any;
+  selectedOpt:string="";
 
   constructor(private servicio:CrudService) { 
   }
@@ -119,9 +124,29 @@ export class ApiComponent implements OnInit {
     this.servicio.getProductos("latam",this.pagina).subscribe((resultado)=>{this.productos=resultado;console.log(resultado)});
   };
 
-  importarProductos(){
-    
-    /*
+  imprtrProductos(){
+    let info
+    if(this.tienda){
+      info={origen:"tienda",destino:this.selectedOpt,Id:this.productoIds}
+    }
+    if(this.distri){
+      info={origen:"distribuidor",destino:this.selectedOpt,Id:this.productoIds}
+    }
+    if(this.latam){
+      info={origen:"latam",destino:this.selectedOpt,Id:this.productoIds}
+    }
+    if(this.triwee){
+      info={origen:"triwee",destino:this.selectedOpt,Id:this.productoIds}
+    }
+
+    if(this.destino==""){
+      this.toggleError=true;
+    }else{
+      this.toggleError=false;
+      this.servicio.importarProductos(info)
+    }
+
+      /*
     for (let i = 0; i < ids.length; i++) {
       console.log(ids[i]);
     }*/
@@ -154,6 +179,23 @@ export class ApiComponent implements OnInit {
       this.pagina=this.paginas
       this.getProductosLatam();
     }
+  }
+
+  updSelected(id:string){
+    if (this.productoIds.length==0 || this.productoIds.indexOf(id)==-1) {
+      this.productoIds.push(id)
+      if (this.toggleImport==false) {
+        this.toggleImport=!this.toggleImport
+      }
+    }else{
+      this.productoIds.splice(this.productoIds.indexOf(id),1)
+      if(this.productoIds.length==0){
+        this.toggleImport=false
+      }
+    }
+    console.log(this.toggleImport)
+    console.log(this.productoIds.length)
+    console.log(this.productoIds)
   }
 
   getPrimera(){
