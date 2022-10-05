@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DhlComponent } from './components/dhl/dhl.component';
 import { CeaceroComponent } from './components/ceacero/ceacero.component';
+import { IbanComponent } from './components/iban/iban.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DhlComponent,
-    CeaceroComponent
+    CeaceroComponent,
+    IbanComponent
   ],
   imports: [
     BrowserModule,
