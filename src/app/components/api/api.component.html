@@ -62,7 +62,7 @@
                 <button class="btn btn-primary" *ngIf="pagina<paginas" (click)="getUltima()">Ultima</button>
             </div>
             <div class="col-1">
-                <button class="btn btn-primary" *ngIf="" (click)="importarProductos()">Importar</button>
+                <button class="btn btn-primary" *ngIf="" (click)="importarProductos();toggleImport=!toggleImport">Importar</button>
             </div>
         </div>
         <table class="table" *ngIf="productos">
@@ -83,20 +83,34 @@
         </table>
     </div>
     <div class="row" *ngIf="productos && (!producto || toggleLst==true) && esFalso==true">
-        <!--
-    <p [innerHTML]="productos"></p>
---> 
-    <h2 class="mt-3">Listado de productos</h2>
-    <p *ngIf="!productos">Cargando</p>
-    <table class="table" *ngIf="productos">
-        <tr>
-            <th *ngIf="productos" scope="col">ID</th>
-            <th *ngIf="productos" scope="col"></th>
-        </tr>
-        <tr *ngFor="let pr of productos;">
-            <td class="l-3">{{pr["@attributes"]["id"]}}</td>
-            <td><button type="submit" class="btn btn-light btn-outline-primary btn-sm" (click)='getUnProducto(pr["@attributes"]["id"])'>Ver Datos</button></td>
-        </tr>
-    </table>
-</div>
+            <!--
+        <p [innerHTML]="productos"></p>
+    --> 
+        <h2 class="mt-3">Listado de productos</h2>
+        <p *ngIf="!productos">Cargando</p>
+        <table class="table" *ngIf="productos">
+            <tr>
+                <th *ngIf="productos" scope="col">ID</th>
+                <th *ngIf="productos" scope="col"></th>
+            </tr>
+            <tr *ngFor="let pr of productos;">
+                <td class="l-3">{{pr["@attributes"]["id"]}}</td>
+                <td><button type="submit" class="btn btn-light btn-outline-primary btn-sm" (click)='getUnProducto(pr["@attributes"]["id"])'>Ver Datos</button></td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="toggleImport">
+        <label *ngIf="tienda">Importando desde Tienda</label>
+        <label *ngIf="distri">Importando desde Distribuidor</label>
+        <label *ngIf="latam">Importando desde Latam</label>
+        <label *ngIf="triwee">Importando desde Triwee</label>
+        <label *ngIf="tienda==false && distri==false && latam==false">No se han cargado los datos de la tienda origen</label>
+        <label>Selecciona destino: </label>
+        <select>
+            <option *ngIf="!tienda" value="">Tienda</option>
+            <option *ngIf="!distri" value="">Distribuidor</option>
+            <option *ngIf="!latam" value="">Latam</option>
+            <option *ngIf="!triwee" value="">Triwee</option>
+        </select>
+    </div>
 </div>

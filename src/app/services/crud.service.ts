@@ -32,8 +32,8 @@ export class CrudService {
     return salida;
   }
 
-  importarProducto(id:any,uri:any){
-    return this.http.get(`${this.url}callProducto.php?id=${id}&uri=${uri}`);
+  importarProductos(infoImport:any){
+    return this.http.post(`${this.url}callProducto.php`,JSON.stringify(infoImport));
   }
 
   alta(articulo:any) {

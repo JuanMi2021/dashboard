@@ -19,14 +19,14 @@ import { count, toArray } from 'rxjs';
 
 
 export class ApiComponent implements OnInit {
-  
-  url = "https://prueba.sicnova3d.com/CRUD/";
+
   toggleDscrptn:boolean=true;
   toggleDscrptnshrt:boolean=true;
   toggleLst:boolean=false;
   tienda:boolean=false;
   distri:boolean=false;
   latam:boolean=false;
+  triwee:boolean=false;
   productos:any;
   producto:any;
   campos:any;
@@ -35,6 +35,10 @@ export class ApiComponent implements OnInit {
   paginas: number = 0;
   pagina: number = 0;
   toggleImport:boolean=false;
+  origen:string="";
+  destino:string="";
+  IDs:any;
+
   constructor(private servicio:CrudService) { 
   }
  
@@ -116,6 +120,7 @@ export class ApiComponent implements OnInit {
   };
 
   importarProductos(){
+    
     /*
     for (let i = 0; i < ids.length; i++) {
       console.log(ids[i]);
